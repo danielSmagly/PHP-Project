@@ -3,7 +3,7 @@
     //login
     session_start();
     $uid = 'Guest';
-   // $uid = 'Pat';
+    //$uid = 'Pat';
    
     if(isset($_SESSION['uid'])){
         $uid = $_SESSION['uid'];
@@ -65,7 +65,7 @@ $mysqli = new mysqli($servername,$username,$password,$dbname);
             foreach($nc as $name =>$comment){
                 //first line = name and timestamp
                 $currentPost ='<center>';
-                $currentPost .='<b>'.$name.'</b>'.'______________________'.date('m/d/y',$timestamp).'<br>';
+                $currentPost .='<b>'.$name.'</b>'.'______________________'.date('m/d/y h:i:sa',$timestamp).'<br>';
                 $currentPost .='<div   style="width:800px; margin:0 auto;">'. $comment.'</div> </center>';  
                 echo $currentPost;
             };
