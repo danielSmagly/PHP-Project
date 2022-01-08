@@ -15,20 +15,21 @@
         echo '<br>';
     }
 
-    $uid = $_POST['username'];
+    $name = $_POST['name'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
 
     //Can add feature to validate the username and password for certaint requiremen
   
 
-    $sql = "INSERT INTO Accounts(Username, pass) VALUES("."'".$uid."',"."'".$password."')";
+    $sql = "INSERT INTO Accounts(name, email, password, comment, timestamp) VALUES("."'".$name."',"."'".$email."',"."'".$password."',NULL, CURRENT_TIMESTAMP)";
     
-
+    echo $sql;
     $result = $mysqli->query($sql);
 
     $pagename = 'loginPage.html';
 
-    if($result === TRUE ){
+    if($result === TRUE){
         echo '<br>';
         echo 'INSERT was successful <br>';
         echo '<br>';
@@ -37,6 +38,10 @@
     }else{
         echo 'Error INSERT INTO table: '.$mysqli->error.'<br>';
     }
+
+    $mysqli -> close();
+
+    //******add account created page ! */
 
 
 ?>

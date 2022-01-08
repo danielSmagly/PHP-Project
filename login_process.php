@@ -1,6 +1,7 @@
 <?php
-    if(empty($_POST['username'])){
-        echo 'You Left username blank!';
+    //***** add email validation form. **********
+    if(empty($_POST['email'])){
+        echo 'You Left email blank!';
         exit();
     }
 
@@ -18,7 +19,7 @@
     
     $mysqli = new mysqli($servername,$username,$password,$dbname);
 
-    if($mysqli -> connect_errno){
+    if($mysqli -> connect_error){
         echo 'Failed to connect to MySQL: '.$mysqli -> connect_error;
         exit();
     }else{
@@ -28,7 +29,7 @@
     }
 
     //User entered username and passowrd
-    $username = $_POST['username'];
+    $email = $_POST['email'];
     $password = $_POST['password'];
 
     $username = strtolower($username);
@@ -41,12 +42,14 @@
     if($result -> num_rows > 0){
         //Output each row of data
         while($row = $result -> fetch_assoc()){
-            $uid_ref = $row["Username"];
-            $pass_ref = $row["pass"];
+            $uid_ref = $row["email"];
+            $pass_ref = $row["password"];
             $uid_ref = strtolower($uid_ref);
+            echo $uid_ref.'<br>';
+            echo $pass_ref;
             //echo $uid_ref.'<br>';
             //echo $pass_ref;
-            if(strcmp($username, $uid_ref) == 0){
+            if(strcmp($email, $uid_ref) == 0){
                 $verify_user = true;
             }
             if(strcmp($password, $pass_ref) == 0){
@@ -74,7 +77,8 @@
 
     session_start();
     $_SESSION['uid'] = $uid;
-    header('Location: logstatus.php');
+    header('Location: timeline.php');
+    $mysqli -> close();
     
 
 
