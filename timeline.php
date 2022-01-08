@@ -29,14 +29,14 @@ $dbname = "MyDatabase";
 
 $mysqli = new mysqli($servername,$username,$password,$dbname);
 
-  /* code to create table
-   $sql = "CREATE TABLE accounts(
+  // code to create table
+   $sql = "CREATE TABLE IF NOT EXISTS accounts(
         name VARCHAR(50), 
         email VARCHAR(50),
         password VARCHAR(50),
         comment VARCHAR(1000),
         timestamp  TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP)";
-  */
+  
 
     //assuming the table exist get everything
     $sql = 'SELECT * FROM Accounts';
@@ -73,7 +73,7 @@ $mysqli = new mysqli($servername,$username,$password,$dbname);
         } 
 
     }else{
-       // echo "No Comment!<br>Add one!";
+        echo "No Comment so far!<br>Add one!";
         exit();
     }
      
