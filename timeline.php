@@ -5,13 +5,10 @@
     $uid = 'Guest';
    // $uid = 'Pat';
    
-  
     if(isset($_SESSION['uid'])){
-        
-     $uid = $_SESSION['uid'];
+        $uid = $_SESSION['uid'];
     }
     $_SESSION['uid'] = $uid; //if no login, then take guest.
-    
 
     //display whether the user is logged in or not
     if(strcmp($uid,'Guest') == 0){
@@ -32,11 +29,16 @@ $dbname = "MyDatabase";
 
 $mysqli = new mysqli($servername,$username,$password,$dbname);
 
-    //base on the uid , query the table to get the comment and the timestamp
-    // $sql = 'SELECT * FROM ';
-    // $sql .= 'Accounts  WHERE name = '.'"';
-    // $sql .= $uid.'"';
+  /* code to create table
+   $sql = "CREATE TABLE accounts(
+        name VARCHAR(50), 
+        email VARCHAR(50),
+        password VARCHAR(50),
+        comment VARCHAR(1000),
+        timestamp  TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP)";
+  */
 
+    //assuming the table exist get everything
     $sql = 'SELECT * FROM Accounts';
    
 
@@ -63,7 +65,7 @@ $mysqli = new mysqli($servername,$username,$password,$dbname);
             foreach($nc as $name =>$comment){
                 //first line = name and timestamp
                 $currentPost ='<center>';
-                $currentPost .='<b>'.$name.'</b>'.'______________________'.date('m/d/yy',$timestamp).'<br>';
+                $currentPost .='<b>'.$name.'</b>'.'______________________'.date('m/d/y',$timestamp).'<br>';
                 $currentPost .='<div   style="width:800px; margin:0 auto;">'. $comment.'</div> </center>';  
                 echo $currentPost;
             };
