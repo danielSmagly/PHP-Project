@@ -22,7 +22,7 @@
     //Can add feature to validate the username and password for certaint requiremen
   
 
-    $sql = "INSERT INTO Accounts(name, email, password, comment, timestamp) VALUES("."'".$name."',"."'".$email."',"."'".$password."',NULL, CURRENT_TIMESTAMP)";
+    $sql = 'INSERT INTO Accounts(name, email, password) VALUES('.'"'.$name.'","'.$email.'","'.$password.'")';
     
     echo $sql;
     $result = $mysqli->query($sql);

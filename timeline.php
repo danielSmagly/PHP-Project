@@ -64,10 +64,12 @@ $mysqli = new mysqli($servername,$username,$password,$dbname);
                                                                  
             foreach($nc as $name =>$comment){
                 //first line = name and timestamp
-                $currentPost ='<center>';
-                $currentPost .='<b>'.$name.'</b>'.'______________________'.date('m/d/y h:i:sa',$timestamp).'<br>';
-                $currentPost .='<div   style="width:800px; margin:0 auto;">'. $comment.'</div> </center>';  
-                echo $currentPost;
+                if($comment !=''){ //if comment is empty don't post it
+                    $currentPost ='<center>';
+                    $currentPost .='<b>'.$name.'</b>'.'______________________'.date('m/d/y h:i:sa',$timestamp).'<br>';
+                    $currentPost .='<div   style="width:800px; margin:0 auto;">'. $comment.'</div> </center>';  
+                    echo $currentPost;
+                }
             };
             echo '<br><br><br>';
         } 
