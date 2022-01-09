@@ -20,10 +20,35 @@
     $post = $_POST['post'];
 
     //how to obtain name and email, 
-    $name = 'NULL';
-    $email = 'NULL';
+    session_start();
+    $uid = 'Guest';
+    if(isset($_SESSION['uid'])){
+        $uid = $_SESSION['uid'];
+    }
+    $_SESSION['uid'] = $uid; //if no login, then take guest.
 
-    $sql = "INSERT INTO Accounts(name, email, password, comment, timestamp) VALUES("."'".$name."',"."'".$email."',"."'NULL','".$post."'".", CURRENT_TIMESTAMP)";
+    //display whether the user is logged in or not
+    if(strcmp($uid,'Guest') == 0){
+        echo 'Not currently logged in (Guest).<br><br>';
+        echo '<a href = "loginPage.html">Click here to log-in</a><br><br>';
+
+    }
+    else{
+        echo 'Logged in as '.strtoupper($uid).'<br><br>';
+        echo '<a href = "logout_process.php">Click here to Log out</a><br><br>';
+    }
+
+    
+
+
+    $name = $uid;
+    $email = 'NULL';
+    $password = 'NULL';
+
+    //There is bug that it only allows to enter short length of text
+    
+
+    $sql = "INSERT INTO Accounts(name, email, password, comment, timestamp) VALUES("."'".$name."',"."'".$email."','".$password."','".$post."'".", CURRENT_TIMESTAMP)";
 
     echo $sql;
     $result = $mysqli->query($sql);
@@ -32,6 +57,7 @@
     if($result === TRUE){
         echo '<br>';
         echo 'INSERT was successful <br>';
+
         echo '<br>';
         //After the user has been signed up then jump to log in page
         header('Location: timeline.php');

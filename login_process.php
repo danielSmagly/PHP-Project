@@ -31,8 +31,8 @@
     //User entered username and passowrd
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $name = '';
 
-    $username = strtolower($username);
 
     //validate the password by referencing the database
     $verify_user = false;
@@ -51,6 +51,7 @@
             //echo $pass_ref;
             if(strcmp($email, $uid_ref) == 0){
                 $verify_user = true;
+                $name = $row["name"];
             }
             if(strcmp($password, $pass_ref) == 0){
                 $verify_pass = true;
@@ -76,7 +77,7 @@
     }
 
     session_start();
-    $_SESSION['uid'] = $uid;
+    $_SESSION['uid'] = $name;
     header('Location: timeline.php');
     $mysqli -> close();
     
