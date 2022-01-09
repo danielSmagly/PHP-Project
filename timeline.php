@@ -69,9 +69,10 @@ $mysqli = new mysqli($servername,$username,$password,$dbname);
                     $currentPost .='<b>'.$name.'</b>'.'______________________'.date('m/d/y h:i:sa',$timestamp).'<br>';
                     $currentPost .='<div   style="width:800px; margin:0 auto;">'. $comment.'</div> </center>';  
                     echo $currentPost;
+                    echo '<br><br><br>';
                 }
             };
-            echo '<br><br><br>';
+           
         } 
 
     }else{

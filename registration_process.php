@@ -18,18 +18,24 @@
     $name = $_POST['name'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $comment = '';
 
     //Can add feature to validate the username and password for certaint requiremen
   
 
-    $sql = 'INSERT INTO Accounts(name, email, password) VALUES('.'"'.$name.'","'.$email.'","'.$password.'")';
-    
-    echo $sql;
-    $result = $mysqli->query($sql);
-
+   // $sql = 'INSERT INTO Accounts(name, email, password) VALUES('.'"'.$name.'","'.$email.'","'.$password.'")';
+   echo 'here1';
+    $sql = 'INSERT INTO Accounts(name,email,password,comment) VALUES ("';
+        $sql .= $name.'","';
+        $sql .= $email.'","';
+        $sql .= $password.'","';
+        $sql .= $comment.'")';
+      
+        $result = $mysqli->query($sql);
+ 
     $pagename = 'loginPage.html';
 
-    if($result === TRUE){
+    if($result === true){
         echo '<br>';
         echo 'INSERT was successful <br>';
         echo '<br>';
