@@ -13,7 +13,7 @@
     //display whether the user is logged in or not
     if(strcmp($uid,'Guest') == 0){
         echo '<center> Not currently logged in (Guest).<br><br> </center>';
-        echo '<center> <a href = "login.html">Click here to log-in</a><br><br> </center>';
+        echo '<center> <a href = "loginPage.html">Click here to log-in</a><br><br> </center>';
 
     }else{
         $currentUser ='<div style =" float:right; ">'.
@@ -80,7 +80,7 @@ $mysqli = new mysqli($servername,$username,$password,$dbname);
         exit();
     }
      
-    echo '<center> <div   style="width:800px; margin:0 auto;"> <a href="addpost.php">Add a comment</a> </div> </center>';  
+    echo '<center> <div   style="width:800px; margin:0 auto;"> <a href="addpost.html">Add a comment</a> </div> </center>';  
     // for addpost.php if next uid = 'Guest' for the user to log in or sign up.
 
 ?>
