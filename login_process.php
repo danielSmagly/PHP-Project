@@ -54,7 +54,7 @@
         }  
     }
     else{
-        echo '0 results <br><br>'; //tester code? only shows up when no accounts are in mydatabase
+        echo '0 accounts found <br><br>'; 
 	echo '<a href = "loginpage.html"><br><br>Click here to return to log-in</a><br><br>';  //added way to get back to login page
 	exit();
     }
