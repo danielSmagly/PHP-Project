@@ -1,12 +1,14 @@
 <?php
     //***** add email validation form. **********
     if(empty($_POST['email'])){
-        echo 'You Left email blank!';
+        echo 'You left email blank!<br>';
+	echo '<a href = "loginpage.html"><br><br>Click here to return to log-in</a><br><br>'; //added way to get back to login page
         exit();
     }
 
     if(empty($_POST['password'])){
-        echo 'You Left password blank!';
+        echo 'You left password blank!<br>';
+	echo '<a href = "loginpage.html"><br><br>Click here to return to log-in</a><br><br>';  //added way to get back to login page
         exit();
     }
 
@@ -18,15 +20,12 @@
 
     
     $mysqli = new mysqli($servername,$username,$password,$dbname);
-
+    //removed tester code?
     if($mysqli -> connect_error){
         echo 'Failed to connect to MySQL: '.$mysqli -> connect_error;
         exit();
-    }else{
-        echo 'Database successfully connected!'.$mysqli -> connect_error;
-        echo '<br>';
-        echo '<br>';
     }
+    
 
     //User entered username and passowrd
     $email = $_POST['email'];
@@ -45,13 +44,9 @@
             $uid_ref = $row["email"];
             $pass_ref = $row["password"];
             $uid_ref = strtolower($uid_ref);
-            echo $uid_ref.'<br>';
-            echo $pass_ref;
-            //echo $uid_ref.'<br>';
-            //echo $pass_ref;
             if(strcmp($email, $uid_ref) == 0){
                 $verify_user = true;
-                $name = $row["name"];
+                $name = $row["name"];  //removed tester and dead code
             }
             if(strcmp($password, $pass_ref) == 0){
                 $verify_pass = true;
@@ -59,20 +54,24 @@
         }  
     }
     else{
-        echo '0 results <br>';
+        echo '0 results <br><br>'; //tester code? only shows up when no accounts are in mydatabase
+	echo '<a href = "loginpage.html"><br><br>Click here to return to log-in</a><br><br>';  //added way to get back to login page
+	exit();
     }
 
     //verify the user name the username
     //convert to common case
     $uid = strtolower($uid);
     if($verify_user == false){
-        echo 'This is invalid username or password';
+        echo 'Invalid username or password';
+	echo '<a href = "loginpage.html"><br><br>Click here to return to log-in</a><br><br>';  //added way to get back to login page
         exit();
     }
 
     //validate password
     if($verify_pass == false){
-        echo 'This is invalid username or password';
+        echo 'Invalid username or password';
+	echo '<a href = "loginpage.html"><br><br>Click here to return to log-in</a><br><br>';  //added way to get back to login page
         exit();
     }
 
