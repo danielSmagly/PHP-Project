@@ -65,9 +65,9 @@ $mysqli = new mysqli($servername,$username,$password,$dbname);
             foreach($nc as $name =>$comment){
                 //first line = name and timestamp
                 if($comment !=''){ //if comment is empty don't post it
-                    $currentPost ='<center>';
+                    $currentPost ='<left>';
                     $currentPost .='<b>'.$name.'</b>'.'______________________'.date('m/d/y h:i:sa',$timestamp).'<br>';
-                    $currentPost .='<div   style="width:800px; margin:0 auto;">'. $comment.'</div> </center>';  
+                    $currentPost .='<div   style="width:800px; margin:0 auto;">'. $comment.'</div> </left>';  
                     echo $currentPost;
                     echo '<br><br><br>';
                 }
