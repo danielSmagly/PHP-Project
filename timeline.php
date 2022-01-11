@@ -17,7 +17,8 @@
 
     }else{
         $currentUser ='<div style =" float:right; ">'.
-         'Welcome '.strtoupper($uid).'  |  '.
+        'Welcome '.strtoupper($uid).'  |  '.
+        '<a href = "contact_us.html">Contact Us</a>'.'  |  '.
         '<a href = "logout_process.php">Log out</a> </div>';
         echo $currentUser.'<br><br>';
     }
