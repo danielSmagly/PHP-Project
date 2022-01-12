@@ -1,20 +1,18 @@
 <html>
-    <title>Contact Us</title>
-    <br><br><br><br>
-    <head>
-        <style>
-            h1 {text-align: center;}
-            p {text-align: center;}
-        </style>
-    </head>
-    <body>  
-        <h1 style = "font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">Contact Us</h1>
-    </body>
-    
+    <div style="text-align:center">
+    <h1 >Contact Us</h1> <br> <br>
+        <form method="post" action = "contactus.php">
+            <label for="name">*Your Name: </label>
+            <input type="text" id = "name" name="name"> <br> <br>
+
+            <label for= "receiver"> *E-mail address: </label>
+            <input type= "email" id = "receiver" name = "receiver"> <br><br>
        
-            <p>If you have any questions about our site, 
-                enter your name an email and you will get back to you soon
-            </p>
-        
-    
+            <label for = "message"> Message: (max. 255 characters) </label><br><br>
+            <textarea id="message" name="message" maxlength="255" style="width:360px; height:100px"></textarea>
+            <br><br>
+            <input type = "submit" value="Send Message">
+
+        </form>
+    </div>
 </html>
