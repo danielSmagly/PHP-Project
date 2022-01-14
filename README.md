@@ -5,7 +5,7 @@
 
 2. Start your posting by clicking on "add a comment" at the very bottom of the page.
 
-3. If you have made created a wrong post then click "Delete" it will immediately delete the post.
+3. If you have created a wrong post then click "Delete" it will immediately delete the post.
 
 4. To log out on the top right corner click "Log out". 
 
