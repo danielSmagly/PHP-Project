@@ -20,6 +20,13 @@
     $password = $_POST['password'];
     $comment = '';
 
+    //validate email
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo 'Invaild email format.';
+        exit();
+    }
+    
+
     //Can add feature to validate the username and password for certaint requirement
 
     //Verify for duplicate account
