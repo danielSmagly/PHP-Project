@@ -33,6 +33,7 @@
     $deletePost_date =  $_POST['deletePost'];
 
     $sql = "DELETE FROM Accounts WHERE timestamp = '".$deletePost_date."'";
+	$sql .=" AND name = '".$uid."'";
 
     echo $sql;
 

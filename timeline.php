@@ -70,9 +70,11 @@
                     $currentPost ='<left>';
                     $currentPost .='<b>'.$name.'</b>'.'______________________'.date('m/d/y h:i:sa',$timestamp);
                     $currentPost .='<div style="background: #dadee7; solid 2px; font-size: 100%; padding: 10px; margin: 20 auto;">'. $comment.'</div> </left>';  
-                    $currentPost .="<form method='post' action='deletePost.php'>
-                                       <button type = 'submit' name = 'deletePost' value ='".date('Y-m-d H:i:s',$timestamp)."'>Delete  </button>
-                                    </form>";
+					if($name == $uid){
+						$currentPost .="<form method='post' action='deletePost.php'>
+										   <button type = 'submit' name = 'deletePost' value ='".date('Y-m-d H:i:s',$timestamp)."'>Delete  </button>
+						</form>";
+					}
                     echo $currentPost;
                     echo '<br><br><br>';
                 }
