@@ -27,17 +27,10 @@
     }
     $_SESSION['uid'] = $uid; //if no login, then take guest.
 
-    //display whether the user is logged in or not
     if(strcmp($uid,'Guest') == 0){
-        echo 'Not currently logged in (Guest).<br><br>';
-        echo '<a href = "loginPage.html">Click here to log-in</a><br><br>';
-
+        header('Location: logstatus.php');
+        exit();
     }
-    else{
-        echo 'Logged in as '.strtoupper($uid).'<br><br>';
-        echo '<a href = "logout_process.php">Click here to Log out</a><br><br>';
-    }
-
     
 
 

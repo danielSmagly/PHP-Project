@@ -15,6 +15,19 @@
         echo '<br>';
     }
 
+    //prevent from guest to delete post
+    session_start();
+    $uid = 'Guest';
+    if(isset($_SESSION['uid'])){
+        $uid = $_SESSION['uid'];
+    }
+    $_SESSION['uid'] = $uid; 
+    
+    if(strcmp($uid,'Guest') == 0){
+        header('Location: logstatus.php');
+        exit();
+    }
+
     //How to identify which post to delete
 
     $deletePost_date =  $_POST['deletePost'];
