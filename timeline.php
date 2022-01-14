@@ -69,10 +69,10 @@
                 if($comment !=''){ //if comment is empty don't post it
                     $currentPost ='<left>';
                     $currentPost .='<b>'.$name.'</b>'.'______________________'.date('m/d/y h:i:sa',$timestamp);
+                    $currentPost .='<div style="background: #dadee7; solid 2px; font-size: 100%; padding: 10px; margin: 20 auto;">'. $comment.'</div> </left>';  
                     $currentPost .="<form method='post' action='deletePost.php'>
                                        <button type = 'submit' name = 'deletePost' value ='".date('Y-m-d H:i:s',$timestamp)."'>Delete  </button>
                                     </form>";
-                    $currentPost .='<div   style="width:800px; margin:0 auto;">'. $comment.'</div> </left>';  
                     echo $currentPost;
                     echo '<br><br><br>';
                 }
