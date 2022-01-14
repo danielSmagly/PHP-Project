@@ -2,6 +2,7 @@
 
     //login
     session_start();
+    
     $uid = 'Guest';
     //$uid = 'Pat';
    
@@ -23,12 +24,12 @@
         echo $currentUser.'<br><br>';
     }
     //login
-$servername = "127.0.0.1";
-$username ="root";
-$password ="password";
-$dbname = "MyDatabase";
+    $servername = "127.0.0.1";
+    $username ="root";
+    $password ="password";
+    $dbname = "MyDatabase";
 
-$mysqli = new mysqli($servername,$username,$password,$dbname);
+    $mysqli = new mysqli($servername,$username,$password,$dbname);
 
   // code to create table
    $sql = "CREATE TABLE IF NOT EXISTS accounts(
@@ -67,7 +68,10 @@ $mysqli = new mysqli($servername,$username,$password,$dbname);
                 //first line = name and timestamp
                 if($comment !=''){ //if comment is empty don't post it
                     $currentPost ='<left>';
-                    $currentPost .='<b>'.$name.'</b>'.'______________________'.date('m/d/y h:i:sa',$timestamp).'<br>';
+                    $currentPost .='<b>'.$name.'</b>'.'______________________'.date('m/d/y h:i:sa',$timestamp);
+                    $currentPost .="<form method='post' action='deletePost.php'>
+                                       <button type = 'submit' name = 'deletePost' value ='".date('Y-m-d H:i:s',$timestamp)."'>Delete  </button>
+                                    </form>";
                     $currentPost .='<div   style="width:800px; margin:0 auto;">'. $comment.'</div> </left>';  
                     echo $currentPost;
                     echo '<br><br><br>';
