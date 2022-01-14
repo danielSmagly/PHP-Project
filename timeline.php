@@ -88,4 +88,5 @@
     echo '<center> <div   style="width:800px; margin:0 auto;"> <a href="addpost.html">Add a comment</a> </div> </center>';  
     // for addpost.php if next uid = 'Guest' for the user to log in or sign up.
 
+    $mysqli -> close();
 ?>

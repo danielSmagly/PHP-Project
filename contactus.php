@@ -76,6 +76,8 @@ if (mail($recipient, $subject, $msg)) {
     exit();
 }
 
+$mysqli -> close();
+
 function test_input($data)
 {
     $data = trim($data);

@@ -36,6 +36,8 @@
         echo 'DELETE ROW: '.$mysqli->error.'<br>';
     }
 
+    $mysqli -> close();
+
     
 
 
