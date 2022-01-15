@@ -64,17 +64,23 @@ if (strlen($message) < 10) {
     exit();
 }
 
-// send to web server
 
-$subject = 'Contact Us';
-$recipient = 'danielsmagly@gmail.com';
-$msg = sprintf('Return address: %s \n\nMessage: %s', $email, $message);
-if (mail($recipient, $subject, $msg)) {
-    echo 'Mail sent';
-} else {
-    echo 'err sndn email';
-    exit();
+$name = strtoupper($name);
+//Set up and send email to our web server
+$subject = 'Request received';
+$returnaddress = 'patricehelles@csus.edu';
+$message = 'Thank you '.$name.' for contacting us. We will be back to you shortly.';
+
+if(mail($email,$subject,$message, 'From: '.$returnaddress )){
+
+    echo 'Message sent!';
+    echo '<br>';
+
+}else{
+    echo 'Error sending email! <br><br>';
+    echo '<a href = "contact_us.html">Go back</a><br><br>';
 }
+
 
 $mysqli -> close();
 

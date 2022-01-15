@@ -32,12 +32,21 @@
     $password = $_POST['password'];
     $name = '';
 
+    $sql = "CREATE TABLE IF NOT EXISTS accounts(
+        name VARCHAR(50), 
+        email VARCHAR(50),
+        password VARCHAR(50),
+        comment VARCHAR(1000),
+        timestamp  TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP)";
 
+    $result = $mysqli -> query($sql);
+    
     //validate the password by referencing the database
     $verify_user = false;
     $verify_pass = false;
     $sql = "SELECT * FROM accounts";
     $result = $mysqli -> query($sql);
+
     if($result -> num_rows > 0){
         //Output each row of data
         while($row = $result -> fetch_assoc()){
@@ -54,25 +63,28 @@
         }  
     }
     else{
-        echo '0 accounts found <br><br>'; 
-	echo '<a href = "loginpage.html"><br><br>Click here to return to log-in</a><br><br>';  //added way to get back to login page
-	exit();
+        echo 'Invalid username and/or password <br><br>'; 
+	echo '<a href = "loginpage.html"><br><br>Return to log-in</a><br><br>';  //added way to get back to login page
+	echo '<a href = "registration.html"><br><br>Sign up</a><br><br>';
+    exit();
     }
 
     //verify the user name the username
     //convert to common case
     $uid = strtolower($uid);
     if($verify_user == false){
-        echo 'Invalid username or password';
-	echo '<a href = "loginpage.html"><br><br>Click here to return to log-in</a><br><br>';  //added way to get back to login page
-        exit();
+        echo 'Invalid username and/or password <br><br>'; 
+        echo '<a href = "loginpage.html"><br><br>Return to log-in</a><br><br>';  //added way to get back to login page
+        echo '<a href = "registration.html"><br><br>Sign up</a><br><br>';
+    exit();
     }
 
     //validate password
     if($verify_pass == false){
-        echo 'Invalid username or password';
-	echo '<a href = "loginpage.html"><br><br>Click here to return to log-in</a><br><br>';  //added way to get back to login page
-        exit();
+        echo 'Invalid username and/or password <br><br>'; 
+        echo '<a href = "loginpage.html"><br><br>Return to log-in</a><br><br>';  //added way to get back to login page
+        echo '<a href = "registration.html"><br><br>Sign up</a><br><br>';
+    exit();
     }
 
     session_start();

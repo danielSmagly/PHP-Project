@@ -8,6 +8,7 @@
 
     if($mysqli -> connect_errno){
         echo 'Failed to connect to MySQL: '.$mysqli -> connect_error;
+        echo '<a href = "registration_process.php"><br><br>Try again!</a><br><br>';
         exit();
     }else{
         //echo 'Database successfully connected!'.$mysqli -> connect_error;
@@ -26,6 +27,14 @@
         exit();
     }
     
+    $sql = "CREATE TABLE IF NOT EXISTS accounts(
+        name VARCHAR(50), 
+        email VARCHAR(50),
+        password VARCHAR(50),
+        comment VARCHAR(1000),
+        timestamp  TIMESTAMP on update CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP)";
+
+    $result = $mysqli->query($sql);
 
     //Can add feature to validate the username and password for certaint requirement
 
@@ -45,9 +54,6 @@
         }  
     }
   
-
-   // $sql = 'INSERT INTO Accounts(name, email, password) VALUES('.'"'.$name.'","'.$email.'","'.$password.'")';
-   echo 'here1';
     $sql = 'INSERT INTO Accounts(name,email,password,comment) VALUES ("';
         $sql .= $name.'","';
         $sql .= $email.'","';
@@ -62,7 +68,7 @@
         echo '<br>';
         echo 'INSERT was successful <br>';
         echo '<br>';
-        //After the user has been signed up then jump to log in page
+        //After the user has been signed up then jump to the log in page
         header('Location: '.$pagename);
     }else{
         echo 'Error INSERT INTO table: '.$mysqli->error.'<br>';
